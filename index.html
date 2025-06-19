@@ -3,6 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <title>Главная страница</title>
+     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: #f5f5f5;
+            padding: 15px;
+            width: 250px;
+            flex-shrink: 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 8px;
+            border-left: 3px solid transparent;
+        }
+        nav a:hover {
+            background: #e0e0e0;
+            border-left: 3px solid #007bff;
+        }
+       
+        main {
+            flex-grow: 1;
+            padding: 20px;
+            background: #fff;
+        }
+        h2 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+      
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            nav {
+                width: 100%;
+                order: 1;
+            }
+            main {
+                order: 2;
+            }
+        }
+        </style>
 </head>
 <body>
      <header>
