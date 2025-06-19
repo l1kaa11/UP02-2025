@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Контакты | EcoTour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: #f5f5f5;
+            padding: 15px;
+            width: 250px;
+            flex-shrink: 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 8px;
+            border-left: 3px solid transparent;
+        }
+        nav a:hover {
+            background: #e0e0e0;
+            border-left: 3px solid #007bff;
+        }
+        .submenu {
+            display: none;
+            padding-left: 15px;
+        }
+        li:hover .submenu {
+            display: block;
+        }
+
+        main {
+            flex-grow: 1;
+            padding: 20px;
+            background: #fff;
+        }
+        h1 {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+            padding-bottom: 10px;
+        }
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        .contact-info p {
+            margin: 15px 0;
+        }
+        .contact-form input, 
+        .contact-form textarea {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .contact-form button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 50%;
+        }
+        .contact-form button:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
+            nav {
+                width: 100%;
+                order: 1;
+            }
+            main {
+                order: 2;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Главная</a></li>
+            <li><a href="news.html">Новости</a></li>
+            <li>
+                <a href="products.html">О продукции ▼</a>
+                <ul class="submenu">
+                    <li><a href="products-list.html">Перечень товаров</a></li>
+                    <li><a href="price.html">Прайс-лист</a></li>
+                </ul>
+            </li>
+            <li><a href="how-we-work.html">Как мы работаем</a></li>
+            <li><a href="faq.html">Вопросы и ответы</a></li>
+            <li>
+                <a href="trainings.html">Тренинги ▼</a>
+                <ul class="submenu">
+                    <li><a href="training-registration.html">Регистрационная форма</a></li>
+                </ul>
+            </li>
+            <li><a href="vacancies.html">Вакансии</a></li>
+            <li><a href="partners.html">Партнеры</a></li>
+            <li><a href="contacts.html">Контакты</a></li>
+        </ul>
+    </nav>
+
+
+    <main>
+        <h1>Контакты</h1>
+        
+        <div class="contact-container">
+
+            <div class="contact-info">
+                <h2>Наши реквизиты</h2>
+                <p><strong>Адрес:</strong> г. Бугуруслан, ул. Челюскина, 41</p>
+                <p><strong>Телефон:</strong> +7 (932) 533-73-11</p>
+                <p><strong>Email:</strong> kira0202lik@gmail.com</p>
+                
+            </div>
+
+        <div class="contact-form">
+            <h2>Обратная связь</h2>
+            <form action="/submit-form" method="POST">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="email" name="email" placeholder="Ваш Email" required>
+                <input type="tel" name="phone" placeholder="Телефон">
+                <textarea name="message" rows="5" placeholder="Ваше сообщение" required></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>
