@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Новости | EcoTour</title>
+    <title>Контакты | EcoTour</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -52,58 +52,39 @@
             padding: 20px;
             background: #fff;
         }
-        h2 {
+        h1 {
             color: #007bff;
             border-bottom: 2px solid #007bff;
             padding-bottom: 10px;
         }
+        .contact-info {
+            margin-bottom: 30px;
+        }
+        .contact-info p {
+            margin: 15px 0;
+        }
+        .contact-form input, 
+        .contact-form textarea {
+            width: 50%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .contact-form button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            width: 50%;
+        }
+        .contact-form button:hover {
+            background: #0056b3;
+        }
 
-        .news-section {
-    margin: 30px 0;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-}
-
-.news-section h2 {
-    color:  #007bff;
-    margin-bottom: 20px;
-}
-
-.news-item {
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.news-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
-
-.news-item h3 {
-    color:  #007bff;
-    margin-top: 0;
-}
-
-.news-date {
-    color: #666;
-    font-size: 0.9em;
-    margin: 5px 0 10px;
-}
-
-.news-item a {
-    color:  #007bff;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.news-item a:hover {
-    text-decoration: underline;
-}
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
@@ -116,11 +97,11 @@
                 order: 2;
             }
         }
-        </style>
+    </style>
 </head>
 <body>
 
-    <nav>
+     <nav>
         <ul>
             <li><a href="index.html">Главная</a></li>
             <li><a href="news.html">Новости</a></li>
@@ -138,30 +119,30 @@
     </nav>
 
 
-<div class="news-section">
-    <h2>Последние новости</h2>
-    
-    <div class="news-item">
-        <h3>Обновление прайс-листа</h3>
-        <p class="news-date">20 июня 2025</p>
-        <p>Мы обновили наш прайс-лист с учетом новых экологических туров и специальных предложений для постоянных клиентов.</p>
-        <a href="price.html">Посмотреть цены →</a>
-    </div>
+    <main>
+        <h1>Контакты</h1>
+        
+        <div class="contact-container">
 
-    <div class="news-item">
-        <h3>Новые вакансии в команду</h3>
-        <p class="news-date">10 июня 2025</p>
-        <p>EcoTour расширяется и ищет энтузиастов-гидов и менеджеров по туризму. Присылайте ваши резюме!</p>
-        <a href="vacancies.html">Подробнее о вакансиях →</a>
-    </div>
+            <div class="contact-info">
+                <h2>Наши реквизиты</h2>
+                <p><strong>Адрес:</strong> г. Бугуруслан, ул. Челюскина, 41</p>
+                <p><strong>Телефон:</strong> +7 (932) 533-73-11</p>
+                <p><strong>Email:</strong> kira0202lik@gmail.com</p>
+                
+            </div>
 
-    <div class="news-item">
-        <h3>Наши новые партнеры</h3>
-        <p class="news-date">1 июня 2025</p>
-        <p>Мы рады представить новых партнеров из Карелии и Алтая, которые предлагают уникальные эко-маршруты.</p>
-        <a href="partners.html">О наших партнерах →</a>
-    </div>
-</div>
+        <div class="contact-form">
+            <h2>Обратная связь</h2>
+            <form action="/submit-form" method="POST">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="email" name="email" placeholder="Ваш Email" required>
+                <input type="tel" name="phone" placeholder="Телефон">
+                <textarea name="message" rows="5" placeholder="Ваше сообщение" required></textarea>
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </main>
 
 </body>
 </html>
