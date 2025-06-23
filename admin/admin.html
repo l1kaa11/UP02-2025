@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Панель администратора - EcoTour</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <style>
+        .admin-panel {
+            display: none;
+        }
+        .admin-panel.active {
+            display: block;
+        }
+        .user-list, .section-list {
+            margin-top: 20px;
+        }
+        .user-card, .section-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .delete-btn {
+            background: #ff4444;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>Панель администратора</h1>
+            <div>
+                <button id="logoutBtn">Выйти</button>
+            </div>
+        </header>
+        
+        <nav class="admin-nav">
+            <ul>
+                <li><a href="#" class="tab-link" data-tab="users">Пользователи</a></li>
+                <li><a href="#" class="tab-link" data-tab="sections">Разделы</a></li>
+            </ul>
+        </nav>
+        
+        <main class="admin-main">
+            <!-- Панель пользователей -->
+            <div id="usersPanel" class="admin-panel active">
+                <h2>Управление пользователями</h2>
+                
+                <form id="addUserForm">
+                    <h3>Добавить нового пользователя</h3>
+                    <div class="form-group">
+                        <label>Логин: <input type="text" id="newUsername" required></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Email: <input type="email" id="newEmail" required></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Пароль: <input type="password" id="newPassword" required></label>
+                    </div>
+                    <div class="form-group">
+                        <label>Роль:
+                            <select id="newUserRole">
+                                <option value="editor">Редактор</option>
+                                <option value="admin">Администратор</option>
+                            </select>
+                        </label>
+                    </div>
+                    <button type="submit">Добавить пользователя</button>
+                </form>
+                
+                <div class="user-list">
+                    <h3>Список пользователей</h3>
+                    <div id="usersList"></div>
+                </div>
+            </div>
+            
+            <!-- Панель разделов -->
+            <div id="sectionsPanel" class="admin-panel">
+                <h2>Управление разделами</h2>
+                
+                <form id="addSectionForm">
+                    <h3>Добавить новый раздел</h3>
+                    <div class="form-group">
+                        <label>Название: <input type="text" id="sectionName" required></label>
+                    </div>
+                    <div class="form-group">
+                        <label>URL: <input type="text" id="sectionSlug" required></label>
+                    </div>
+                    <button type="submit">Добавить раздел</button>
+                </form>
+                
+                <div class="section-list">
+                    <h3>Список разделов</h3>
+                    <div id="sectionsList"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/auth.js"></script>
+    <script>
+        // Проверка авторизации
+        const user = auth.getCurrentUser();
+        if (!user || user.role !== 'admin') {
+            window.location.href = 'login.html';
+        }
+        
+        // Переключение между панелями
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const tab = this.dataset.tab;
+                
+                document.querySelectorAll('.admin-panel').forEach(panel => {
+                    panel.classList.remove('active');
+                });
+                
+                document.getElementById(`${tab}Panel`).classList.add('active');
+            });
+        });
+        
+        // Загрузка пользователей
+        function loadUsers() {
+            const usersList = document.getElementById('usersList');
+            usersList.innerHTML = '';
+            
+            auth.users.forEach(user => {
+                const userCard = document.createElement('div');
+                userCard.className = 'user-card';
+                userCard.innerHTML = `
+                    <div>
+                        <strong>${user.username}</strong> (${user.role === 'admin' ? 'Админ' : 'Редактор'})<br>
+                        <small>${user.email}</small>
+                    </div>
+                    <div>
+                        <button class="delete-btn" data-id="${user.id}">Удалить</button>
+                    </div>
+                `;
+                usersList.appendChild(userCard);
+            });
+        }
+        
+        // Загрузка разделов
+        function loadSections() {
+            const sectionsList = document.getElementById('sectionsList');
+            sectionsList.innerHTML = '';
+            
+            auth.sections.forEach(section => {
+                const sectionCard = document.createElement('div');
+                sectionCard.className = 'section-card';
+                sectionCard.innerHTML = `
+                    <div>
+                        <strong>${section.name}</strong><br>
+                        <small>/${section.slug}.html</small>
+                    </div>
+                    <div>
+                        <button class="delete-btn" data-id="${section.id}" data-type="section">Удалить</button>
+                    </div>
+                `;
+                sectionsList.appendChild(sectionCard);
+            });
+        }
+        
+        // Добавление пользователя
+        document.getElementById('addUserForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newUser = {
+                username: document.getElementById('newUsername').value,
+                email: document.getElementById('newEmail').value,
+                password: document.getElementById('newPassword').value,
+                role: document.getElementById('newUserRole').value,
+                firstLogin: false
+            };
+            
+            auth.addUser(newUser);
+            loadUsers();
+            this.reset();
+            alert('Пользователь добавлен!');
+        });
+        
+        // Добавление раздела
+        document.getElementById('addSectionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const newSection = {
+                name: document.getElementById('sectionName').value,
+                slug: document.getElementById('sectionSlug').value
+            };
+            
+            auth.addSection(newSection);
+            loadSections();
+            this.reset();
+            alert('Раздел добавлен!');
+        });
+        
+        // Удаление элементов
+document.addEventListener('click', function(e) {
+    if (e.target.classList.contains('delete-btn')) {
+        if (confirm('Вы уверены, что хотите удалить этот элемент?')) {
+            const id = parseInt(e.target.dataset.id);
+            
+            if (e.target.dataset.type === 'section') {
+                auth.deleteSection(id);
+                loadSections();
+            } else {
+                // Удаляем пользователя, если это не раздел
+                auth.deleteUser(id);
+                loadUsers();
+            }
+        }
+    }
+});
+        
+
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            auth.logout();
+            window.location.href = 'login.html';
+        });
+        
+
+        loadUsers();
+        loadSections();
+    </script>
+</body>
+</html>
