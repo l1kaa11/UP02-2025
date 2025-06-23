@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новости | EcoTour</title>
-<style>
+    <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -12,6 +12,7 @@
             display: flex;
             min-height: 100vh;
         }
+
         nav {
             background: #f5f5f5;
             padding: 15px;
@@ -56,16 +57,53 @@
             border-bottom: 2px solid #007bff;
             padding-bottom: 10px;
         }
-        .news-item {
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 1px dashed #ccc;
-        }
-        .news-date {
-            color: #666;
-            font-size: 0.9em;
-        }
 
+        .news-section {
+    margin: 30px 0;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 8px;
+}
+
+.news-section h2 {
+    color:  #007bff;
+    margin-bottom: 20px;
+}
+
+.news-item {
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.news-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.news-item h3 {
+    color:  #007bff;
+    margin-top: 0;
+}
+
+.news-date {
+    color: #666;
+    font-size: 0.9em;
+    margin: 5px 0 10px;
+}
+
+.news-item a {
+    color:  #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.news-item a:hover {
+    text-decoration: underline;
+}
         @media (max-width: 768px) {
             body {
                 flex-direction: column;
@@ -78,7 +116,7 @@
                 order: 2;
             }
         }
-    </style>
+        </style>
 </head>
 <body>
 
@@ -100,33 +138,30 @@
     </nav>
 
 
-    <main>
-        <h1>Новости компании EcoTour</h1>
-        
+<div class="news-section">
+    <h2>Последние новости</h2>
+    
+    <div class="news-item">
+        <h3>Обновление прайс-листа</h3>
+        <p class="news-date">20 июня 2025</p>
+        <p>Мы обновили наш прайс-лист с учетом новых экологических туров и специальных предложений для постоянных клиентов.</p>
+        <a href="price.html">Посмотреть цены →</a>
+    </div>
 
-        <div class="news-item">
-            <h2>Запуск нового продукта</h2>
-            <p class="news-date">15 июня 2025</p>
-            <p>Мы рады сообщить о выходе новой линейки товаров. Теперь в ассортименте появились инновационные решения для бизнеса.</p>
-            <a href="news-1-details.html">Подробнее →</a>
-        </div>
+    <div class="news-item">
+        <h3>Новые вакансии в команду</h3>
+        <p class="news-date">10 июня 2025</p>
+        <p>EcoTour расширяется и ищет энтузиастов-гидов и менеджеров по туризму. Присылайте ваши резюме!</p>
+        <a href="vacancies.html">Подробнее о вакансиях →</a>
+    </div>
 
-
-        <div class="news-item">
-            <h2>Участие в выставке</h2>
-            <p class="news-date">5 мая 2025</p>
-            <p>Наша компания приняла участие в международной выставке "Технологии будущего". Фотоотчет доступен в галерее.</p>
-            <a href="news-2-details.html">Подробнее →</a>
-        </div>
-
-
-        <div class="news-item">
-            <h2>Обновление прайс-листа</h2>
-            <p class="news-date">20 апреля 2025</p>
-            <p>С 1 мая 2025 года вступают в силу новые цены на часть услуг. Ознакомиться с изменениями можно в разделе "Прайс-лист".</p>
-            <a href="price.html">Перейти к прайсу →</a>
-        </div>
-    </main>
+    <div class="news-item">
+        <h3>Наши новые партнеры</h3>
+        <p class="news-date">1 июня 2025</p>
+        <p>Мы рады представить новых партнеров из Карелии и Алтая, которые предлагают уникальные эко-маршруты.</p>
+        <a href="partners.html">О наших партнерах →</a>
+    </div>
+</div>
 
 </body>
 </html>
