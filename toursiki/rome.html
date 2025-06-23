@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рим - Вечный город | EcoTour</title>
+    <style>
+        /* Основные стили (можно вынести в отдельный CSS файл) */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .tour-header {
+            background-color: #f5f5f5;
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        .tour-title {
+            color: #2e8b57;
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+        .tour-subtitle {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        .tour-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .meta-item {
+            background: #e9f5ee;
+            padding: 10px 15px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        .meta-item i {
+            margin-right: 8px;
+            color: #2e8b57;
+        }
+        .tour-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin: 30px 0;
+        }
+        .tour-gallery img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+        .tour-gallery img:hover {
+            transform: scale(1.03);
+        }
+        .tour-section {
+            margin-bottom: 30px;
+        }
+        .section-title {
+            color: #2e8b57;
+            border-bottom: 2px solid #2e8b57;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        .tour-itinerary {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .day-item {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed #ddd;
+        }
+        .day-item:last-child {
+            border-bottom: none;
+        }
+        .day-title {
+            font-weight: bold;
+            color: #2e8b57;
+            margin-bottom: 10px;
+        }
+        .hotel-card {
+            display: flex;
+            gap: 20px;
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .hotel-image {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        .price-box {
+            background: #2e8b57;
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        .price-amount {
+            font-size: 2em;
+            font-weight: bold;
+        }
+        .book-btn {
+            display: inline-block;
+            background: white;
+            color: #2e8b57;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s;
+        }
+        .book-btn:hover {
+            background: #e0e0e0;
+        }
+        .back-button {
+            display: inline-block;
+            margin-bottom: 20px;
+            padding: 8px 15px;
+            background-color: #f5f5f5;
+            color: #2e8b57;
+            text-decoration: none;
+            border-radius: 4px;
+            border: 1px solid #2e8b57;
+            transition: all 0.3s;
+            font-size: 0.9em;
+        }
+        .back-button:hover {
+            background-color: #2e8b57;
+            color: white;
+        }
+        .back-button i {
+            margin-right: 5px;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="tour-header">
+         <a href="../price.html" class="back-button">
+    <i class="fas fa-arrow-left"></i> Вернуться к списку туров
+         </a>
+        <h1 class="tour-title">Рим - Вечный город</h1>
+        <p class="tour-subtitle">Экскурсионный тур по самым знаковым местам итальянской столицы</p>
+        
+        <div class="tour-meta">
+            <div class="meta-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Италия, Рим</span>
+            </div>
+            <div class="meta-item">
+                <i class="fas fa-calendar-alt"></i>
+                <span>15.06.2025 - 22.06.2025 (7 ночей)</span>
+            </div>
+            <div class="meta-item">
+                <i class="fas fa-users"></i>
+                <span>Группа до 15 человек</span>
+            </div>
+            <div class="meta-item">
+                <i class="fas fa-walking"></i>
+                <span>Средний уровень активности</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="tour-gallery">
+        <img src="images/rome1.jpg" alt="Колизей">
+        <img src="images/rome2.jpg" alt="Ватикан">
+        <img src="images/rome3.jpg" alt="Фонтан Треви">
+    </div>
+
+    <div class="tour-section">
+        <h2 class="section-title">Описание тура</h2>
+        <p>Этот недельный тур познакомит вас с самыми знаковыми достопримечательностями Вечного города. Вы посетите древний Колизей, величественный Пантеон, живописные площади и знаменитые фонтаны Рима. Насладитесь настоящей итальянской кухней и окунетесь в неповторимую атмосферу этого города.</p>
+    </div>
+
+    <div class="tour-section">
+        <h2 class="section-title">Программа тура</h2>
+        <div class="tour-itinerary">
+            <div class="day-item">
+                <div class="day-title">День 1: Прибытие в Рим</div>
+                <p>Встреча в аэропорту, трансфер в отель. Вечерняя прогулка по историческому центру с гидом. Ужин в традиционном римском ресторане.</p>
+            </div>
+            <div class="day-item">
+                <div class="day-title">День 2: Античный Рим</div>
+                <p>Экскурсия по Колизею, Римскому форуму и Палатинскому холму. После обеда - посещение Капитолийских музеев.</p>
+            </div>
+            <div class="day-item">
+                <div class="day-title">День 3: Ватикан</div>
+                <p>Экскурсия по музеям Ватикана, Сикстинской капелле и собору Святого Петра. Свободное время во второй половине дня.</p>
+            </div>
+            <!-- Остальные дни -->
+        </div>
+    </div>
+
+    <div class="tour-section">
+        <h2 class="section-title">Проживание</h2>
+        <div class="hotel-card">
+            <img src="images/hotel-rome.jpg" alt="Отель в Риме" class="hotel-image">
+            <div>
+                <h3>Hotel Artemide 4*</h3>
+                <p><i class="fas fa-map-marker-alt"></i> Расположение: в 5 минутах ходьбы от вокзала Термини</p>
+                <p><i class="fas fa-utensils"></i> Питание: завтраки "шведский стол"</p>
+                <p><i class="fas fa-wifi"></i> Бесплатный Wi-Fi, кондиционер, мини-бар</p>
+                <p>Отель с богатой историей, сочетающий классический итальянский стиль с современным комфортом.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="tour-section">
+        <h2 class="section-title">Включено в стоимость</h2>
+        <ul>
+            <li>Авиаперелет Москва-Рим-Москва (эконом-класс)</li>
+            <li>Проживание в отеле 4* (6 ночей)</li>
+            <li>Питание: завтраки</li>
+            <li>Все экскурсии по программе</li>
+            <li>Трансферы по программе</li>
+            <li>Медицинская страховка</li>
+            <li>Русскоязычный гид</li>
+        </ul>
+    </div>
+
+    <div class="tour-section">
+        <h2 class="section-title">Дополнительно оплачивается</h2>
+        <ul>
+            <li>Обеды и ужины (около 20-30€ на человека)</li>
+            <li>Личные расходы</li>
+            <li>Дополнительные экскурсии</li>
+        </ul>
+    </div>
+
+    <div class="price-box">
+        <div>Стоимость тура:</div>
+        <div class="price-amount">85 900 ₽</div>
+        <div>за человека при двухместном размещении</div>
+        <a href="#" class="book-btn">Забронировать тур</a>
+    </div>
+</body>
+</html>
