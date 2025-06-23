@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Партнеры - EcoTour</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #fff;
+            color: #333;
+        }
+        
+        .content-container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        nav {
+            background: #f5f5f5;
+            padding: 15px;
+            width: 250px;
+            flex-shrink: 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav li {
+            margin-bottom: 10px;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            display: block;
+            padding: 8px;
+            border-left: 3px solid transparent;
+        }
+        nav a:hover {
+            background: #e0e0e0;
+            border-left: 3px solid #2e8b57;
+        }
+       
+        main {
+            flex-grow: 1;
+            padding: 30px;
+        }
+        
+        h2 {
+            color: #2e8b57;
+            border-bottom: 2px solid #2e8b57;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        
+        .partners-intro {
+            margin-bottom: 30px;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+        
+        .partner-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .partner-type {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 25px;
+            border: 1px solid #e0e0e0;
+        }
+        
+        .partner-type h3 {
+            color: #2e8b57;
+            margin-top: 0;
+        }
+        
+        .partner-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .partner-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .partner-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(46, 139, 87, 0.1);
+        }
+        
+        .partner-logo {
+            height: 80px;
+            max-width: 100%;
+            object-fit: contain;
+            margin-bottom: 15px;
+        }
+        
+        .partner-name {
+            font-weight: bold;
+            margin: 10px 0;
+            color: #2e8b57;
+        }
+        
+        .partner-location {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        
+        .become-partner {
+            background: #f0f8ff;
+            padding: 40px;
+            border-radius: 8px;
+            margin-top: 50px;
+            max-width: 800px;
+        }
+        
+        .benefits-list {
+            columns: 2;
+            column-gap: 30px;
+            margin: 20px 0;
+        }
+        
+        .benefits-list li {
+            margin-bottom: 10px;
+            break-inside: avoid;
+        }
+        
+        .partner-form {
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            max-width: 500px;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: #2e8b57;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #3aa76d;
+        }
+        
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+            }
+            
+            nav {
+                width: 100%;
+                order: 1;
+            }
+            
+            main {
+                order: 2;
+                padding: 20px;
+            }
+            
+            .benefits-list {
+                columns: 1;
+            }
+            
+            .become-partner {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li>
+                    <a href="products.html">О продукции ▼</a>
+                    <ul class="submenu">
+                        <li><a href="price.html">Прайс-лист</a></li>
+                    </ul>
+                </li>
+                <li><a href="faq.html">Вопросы и ответы</a></li>
+                <li><a href="vacancies.html">Вакансии</a></li>
+                <li><a href="partners.html">Партнеры</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <h2>Наши партнеры</h2>
+            
+            <div class="partners-intro">
+                <p>EcoTour сотрудничает с локальными гидами, эко-отелями и природными заповедниками по всему миру. Вместе мы создаем уникальные экологические маршруты и сохраняем природу для будущих поколений.</p>
+            </div>
+            
+            <div class="partner-types">
+                <div class="partner-type">
+                    <h3>Для гидов и организаторов туров</h3>
+                    <p>Станьте партнером и получайте стабильный поток клиентов. Мы берем на себя маркетинг, бронирование и платежи, а вы сосредотачиваетесь на том, что умеете лучше всего - проведении туров.</p>
+                </div>
+                
+                <div class="partner-type">
+                    <h3>Для отелей и эко-лоджей</h3>
+                    <p>Размещайте информацию о вашем размещении в наших турах. Мы предлагаем комплексные решения для экологичного туризма.</p>
+                </div>
+                
+                <div class="partner-type">
+                    <h3>Для заповедников и нацпарков</h3>
+                    <p>Совместно разрабатываем маршруты, которые сочетают доступность для туристов и сохранение хрупких экосистем.</p>
+                </div>
+            </div>
+            
+            <h3>Наши текущие партнеры</h3>
+            
+            <div class="partner-list">
+                <div class="partner-card">
+                    <div class="partner-name">Eco Lodge Карелия</div>
+                    <div class="partner-location">Карелия, Россия</div>
+                    <p>Эко-отель на берегу озера с собственными маршрутами</p>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-name">Green Path</div>
+                    <div class="partner-location">Алтай, Россия</div>
+                    <p>Команда гидов-натуралистов с 10-летним опытом</p>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-name">Байкальский заповедник</div>
+                    <div class="partner-location">Бурятия, Россия</div>
+                    <p>Официальные экскурсии по заповедным территориям</p>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-name">Forest Guides</div>
+                    <div class="partner-location">Камчатка, Россия</div>
+                    <p>Специалисты по дикой природе Дальнего Востока</p>
+                </div>
+            </div>
+            
+            <div class="become-partner">
+                <h3>Стать партнером EcoTour</h3>
+                <p>Присоединяйтесь к нашей сети партнеров и получайте:</p>
+                
+                <ul class="benefits-list">
+                    <li>Доступ к тысячам туристов</li>
+                    <li>Техническую поддержку 24/7</li>
+                    <li>Маркетинговое продвижение</li>
+                    <li>Обучение и сертификацию</li>
+                    <li>Гарантированные выплаты</li>
+                    <li>CRM-систему для управления</li>
+                    <li>Аналитику и отчетность</li>
+                    <li>Участие в экопрограммах</li>
+                </ul>
+                
+                <div class="partner-form">
+                    <form action="#" method="post">
+                        <div class="form-group">
+                            <label for="company">Название компании/проекта</label>
+                            <input type="text" id="company" name="company" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contact-name">Контактное лицо</label>
+                            <input type="text" id="contact-name" name="contact-name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Телефон</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="partner-type">Тип партнерства</label>
+                            <select id="partner-type" name="partner-type" required>
+                                <option value="">Выберите тип</option>
+                                <option value="guide">Гид/организатор туров</option>
+                                <option value="hotel">Отель/эко-лофт</option>
+                                <option value="reserve">Заповедник/нацпарк</option>
+                                <option value="other">Другое</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description">Опишите ваш проект (100-300 слов)</label>
+                            <textarea id="description" name="description" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Отправить заявку</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
