@@ -5,163 +5,567 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Новости | EcoTour</title>
     <style>
+        :root {
+            --primary-color: #2e8b57;
+            --secondary-color: #3aa76d;
+            --text-color: #333;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
+            color: var(--text-color);
+            line-height: 1.6;
             display: flex;
+            flex-direction: column;
             min-height: 100vh;
         }
 
-        nav {
-            background: #f5f5f5;
-            padding: 15px;
-            width: 250px;
-            flex-shrink: 0;
+        /* Хедер */
+        .header-wrapper {
+            background-color: #2e8b57;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .company-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+            color: white;
+        }
+
+        /* Основной контент */
+        .content-container {
+            display: flex;
+            flex-grow: 1;
+        }
+
+        /* Навигация */
+        nav {
+            background: var(--white);
+            padding: 25px 15px;
+            width: 280px;
+            flex-shrink: 0;
+            box-shadow: var(--shadow);
+        }
+        
         nav ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
+        
         nav li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             position: relative;
         }
+        
         nav a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-color);
             display: block;
-            padding: 8px;
-            border-left: 3px solid transparent;
+            padding: 12px 15px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
-        nav a:hover {
-            background: #e0e0e0;
-            border-left: 3px solid #007bff;
+        
+        nav a:hover, nav .active {
+            background: rgba(46, 139, 87, 0.1);
+            color: var(--primary-color);
         }
+        
         .submenu {
             display: none;
+            margin-left: 10px;
+            margin-top: 5px;
+            border-left: 2px solid var(--primary-color);
             padding-left: 15px;
         }
+        
         li:hover .submenu {
             display: block;
+            animation: fadeIn 0.3s ease;
         }
-
+        
+        /* Основное содержимое */
         main {
             flex-grow: 1;
-            padding: 20px;
-            background: #fff;
+            padding: 40px;
+            background: var(--white);
         }
+        
+        /* Заголовки */
+        h1, h2, h3 {
+            color: var(--primary-color);
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--primary-color);
+        }
+        
         h2 {
-            color: #007bff;
-            border-bottom: 2px solid #007bff;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+        }
+        
+        h3 {
+            font-size: 1.4rem;
+            margin-top: 0;
+        }
+        
+        /* Секция новостей */
+        .news-section {
+            margin: 40px 0;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .news-card {
+            background: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .news-card:hover .news-image img {
+            transform: scale(1.05);
+        }
+        
+        .news-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-date {
+            display: inline-block;
+            background: var(--primary-color);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+            align-self: flex-start;
+        }
+        
+        .news-excerpt {
+            margin: 15px 0;
+            flex-grow: 1;
+        }
+        
+        .read-more {
+            display: inline-flex;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 15px;
+            transition: color 0.3s ease;
+        }
+        
+        .read-more:hover {
+            color: var(--secondary-color);
+        }
+        
+        .read-more i {
+            margin-left: 8px;
+            transition: transform 0.3s ease;
+        }
+        
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+        
+        /* Категории новостей */
+        .news-categories {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .category-btn {
+            padding: 8px 16px;
+            background: var(--light-bg);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .category-btn:hover, .category-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        /* Пагинация */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 50px;
+            gap: 10px;
+        }
+        
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: var(--light-bg);
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .page-btn:hover, .page-btn.active {
+            background: var(--primary-color);
+            color: var(--white);
+        }
+        
+        /* Футер */
+        footer {
+            background-color: #2e8b57;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: auto;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
             padding-bottom: 10px;
         }
 
-        .news-section {
-    margin: 30px 0;
-    padding: 20px;
-    background: #f9f9f9;
-    border-radius: 8px;
-}
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
 
-.news-section h2 {
-    color:  #007bff;
-    margin-bottom: 20px;
-}
+        .footer-section a {
+            color: #e0e0e0;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
 
-.news-item {
-    margin-bottom: 25px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #e0e0e0;
-}
+        .footer-section a:hover {
+            color: white;
+        }
 
-.news-item:last-child {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-}
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
 
-.news-item h3 {
-    color:  #007bff;
-    margin-top: 0;
-}
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
 
-.news-date {
-    color: #666;
-    font-size: 0.9em;
-    margin: 5px 0 10px;
-}
-
-.news-item a {
-    color:  #007bff;
-    text-decoration: none;
-    font-weight: bold;
-    display: inline-block;
-    margin-top: 10px;
-}
-
-.news-item a:hover {
-    text-decoration: underline;
-}
-        @media (max-width: 768px) {
-            body {
+        .copyright {
+            width: 100%;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+        }
+        
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 992px) {
+            .content-container {
                 flex-direction: column;
             }
+            
             nav {
                 width: 100%;
                 order: 1;
             }
+            
             main {
                 order: 2;
+                padding: 25px;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
             }
         }
-        </style>
+        
+        @media (max-width: 576px) {
+            main {
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <!-- Хедер как в index.html -->
+    <div class="header-wrapper">
+        <div class="header-container">
+            <div class="logo-title">
+                <img src="images/logo.png" alt="Логотип EcoTour" class="logo">
+                <h1 class="company-name">EcoTour</h1>
+            </div>
+        </div>
+    </div>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="news.html">Новости</a></li>
-            <li>
-                <a href="products.html">О продукции ▼</a>
-                <ul class="submenu">
-                    <li><a href="price.html">Прайс-лист</a></li>
+    <div class="content-container">
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="news.html" class="active">Новости</a></li>
+                <li>
+                    <a href="products.html">О продукции <i class="fas fa-chevron-down"></i></a>
+                    <ul class="submenu">
+                        <li><a href="price.html">Прайс-лист</a></li>
+                       
+                    </ul>
+                </li>
+                <li><a href="faq.html">Вопросы и ответы</a></li>
+                <li><a href="vacancies.html">Вакансии</a></li>
+                <li><a href="partners.html">Партнеры</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="carts.html">Карта проекта</a></li>
+                <li class="admin-login-link">
+                    <a href="admin/login.html"><i class="fas fa-lock"></i> Вход для сотрудников</a>
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <h1>Новости EcoTour</h1>
+            
+            <div class="news-categories">
+                <button class="category-btn active">Все новости</button>
+                <button class="category-btn">Акции</button>
+                <button class="category-btn">События</button>
+                <button class="category-btn">Партнеры</button>
+                <button class="category-btn">Вакансии</button>
+            </div>
+            
+            <div class="news-section">
+                <div class="news-grid">
+                    <!-- Новость 1 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="images/news1.jpg" alt="Новые направления">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">20 июня 2025</span>
+                            <h3>Новые экотуры в Карелию и на Алтай</h3>
+                            <p class="news-excerpt">Мы рады представить 5 новых экологических маршрутов по самым живописным местам России. Теперь вы можете отправиться в уникальные путешествия с нашими профессиональными гидами.</p>
+                            <a href="toursiki/altay.html" class="read-more">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Новость 2 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="images/news2.jpg" alt="Специальное предложение">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">15 июня 2025</span>
+                            <h3>Специальное предложение для раннего бронирования</h3>
+                            <p class="news-excerpt">Забронируйте любой тур до 31 июля и получите скидку 15%! Акция действует на все направления, включая новые маршруты по Европе.</p>
+                            <a href="price.html" class="read-more">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Новость 3 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="images/news3.jpg" alt="Экологическая инициатива">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">10 июня 2025</span>
+                            <h3>Наша новая экологическая инициатива</h3>
+                            <p class="news-excerpt">EcoTour запускает программу по восстановлению лесов. С каждого проданного тура мы будем высаживать 5 деревьев в пострадавших от пожаров регионах.</p>
+                            <a href="#" class="read-more">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Новость 4 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="images/news4.jpg" alt="Новые вакансии">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">5 июня 2025</span>
+                            <h3>В команду EcoTour требуются гиды</h3>
+                            <p class="news-excerpt">Мы расширяемся и ищем энтузиастов, готовых делиться любовью к природе с нашими клиентами. Полный список вакансий и требований к кандидатам.</p>
+                            <a href="vacancies.html" class="read-more">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Новость 5 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="images/news5.jpg" alt="Партнерство">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">1 июня 2025</span>
+                            <h3>Новые партнеры в Италии и Греции</h3>
+                            <p class="news-excerpt">Мы заключили соглашения с местными экологическими организациями, что позволит нам предложить вам еще больше уникальных маршрутов.</p>
+                            <a href="partners.html" class="read-more">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    
+                    <!-- Новость 6 -->
+                    <div class="news-card">
+                        <div class="news-image">
+                            <img src="images/news6.jpg" alt="Обновление прайса">
+                        </div>
+                        <div class="news-content">
+                            <span class="news-date">25 мая 2025</span>
+                            <h3>Обновление прайс-листа на летний сезон</h3>
+                            <p class="news-excerpt">Мы пересмотрели цены на наши самые популярные туры, добавили новые варианты размещения и специальные предложения для семей.</p>
+                            <a href="price.html" class="read-more">Читать подробнее <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="pagination">
+                    <a href="#" class="page-btn"><i class="fas fa-chevron-left"></i></a>
+                    <a href="#" class="page-btn active">1</a>
+                    <a href="#" class="page-btn">2</a>
+                    <a href="#" class="page-btn">3</a>
+                    <a href="#" class="page-btn"><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Футер как в index.html -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>EcoTour</h3>
+                <p>Инновационные экологические туры с местными гидами по всему миру.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Меню</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="news.html">Новости</a></li>
+                    <li><a href="products.html">О продукции</a></li>
+                    <li><a href="faq.html">Вопросы и ответы</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
                 </ul>
-            </li>
-            <li><a href="faq.html">Вопросы и ответы</a></li>
-            <li><a href="vacancies.html">Вакансии</a></li>
-            <li><a href="partners.html">Партнеры</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
-        </ul>
-    </nav>
-
-
-<div class="news-section">
-    <h2>Последние новости</h2>
-    
-    <div class="news-item">
-        <h3>Обновление прайс-листа</h3>
-        <p class="news-date">20 июня 2025</p>
-        <p>Мы обновили наш прайс-лист с учетом новых экологических туров и специальных предложений для постоянных клиентов.</p>
-        <a href="price.html">Посмотреть цены →</a>
-    </div>
-
-    <div class="news-item">
-        <h3>Новые вакансии в команду</h3>
-        <p class="news-date">10 июня 2025</p>
-        <p>EcoTour расширяется и ищет энтузиастов-гидов и менеджеров по туризму. Присылайте ваши резюме!</p>
-        <a href="vacancies.html">Подробнее о вакансиях →</a>
-    </div>
-
-    <div class="news-item">
-        <h3>Наши новые партнеры</h3>
-        <p class="news-date">1 июня 2025</p>
-        <p>Мы рады представить новых партнеров из Карелии и Алтая, которые предлагают уникальные эко-маршруты.</p>
-        <a href="partners.html">О наших партнерах →</a>
-    </div>
-</div>
-
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Экологическая, 15</li>
+                    <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
+                    <li><i class="fas fa-envelope"></i> info@ecotour.ru</li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 EcoTour. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
