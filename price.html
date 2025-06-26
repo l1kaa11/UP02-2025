@@ -3,96 +3,167 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Прайс-лист туров | Название компании</title>
+    <title>Прайс-лист туров | EcoTour</title>
     <style>
+        :root {
+            --primary-color: #2e8b57;
+            --white: #ffffff;
+            --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            --text-color: #333;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             display: flex;
+            flex-direction: column;
             min-height: 100vh;
             background-color: #f8f9fa;
         }
 
-        nav {
-            background: #f5f5f5;
-            padding: 15px;
-            width: 250px;
-            flex-shrink: 0;
+        /* Хедер */
+        .header-wrapper {
+            background-color: #2e8b57;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 60px;
+            width: auto;
+        }
+
+        .company-name {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 0;
+            color: white;
+        }
+
+        /* Основной контейнер */
+        .content-wrapper {
+            display: flex;
+            flex: 1;
+        }
+
+        /* Навигация */
+        nav {
+            background: var(--white);
+            padding: 25px 15px;
+            width: 280px;
+            flex-shrink: 0;
+            box-shadow: var(--shadow);
+            z-index: 10;
+        }
+        
         nav ul {
             list-style: none;
             padding: 0;
             margin: 0;
         }
+        
         nav li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             position: relative;
         }
+        
         nav a {
             text-decoration: none;
-            color: #333;
+            color: var(--text-color);
             display: block;
-            padding: 8px;
-            border-left: 3px solid transparent;
-        }
-        nav a:hover {
-            background: #e0e0e0;
-            border-left: 3px solid #007bff;
-        }
-        .submenu {
-            display: none;
-            padding-left: 15px;
-        }
-        li:hover .submenu {
-            display: block;
+            padding: 12px 15px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            font-weight: 500;
         }
         
+        nav a:hover, nav .active {
+            background: rgba(46, 139, 87, 0.1);
+            color: var(--primary-color);
+        }
+        
+        .submenu {
+            display: none;
+            margin-left: 10px;
+            margin-top: 5px;
+            border-left: 2px solid var(--primary-color);
+            padding-left: 15px;
+        }
+        
+        li:hover .submenu {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Основной контент */
         main {
-            flex-grow: 1;
+            flex: 1;
             padding: 30px;
             background: #fff;
         }
+
         h1 {
-            color: #2c3e50;
+            color: #2e8b57;
             margin-top: 0;
             padding-bottom: 15px;
-            border-bottom: 2px solid #3498db;
+            border-bottom: 2px solid #2e8b57;
         }
-        
-        
+
+        /* Таблица туров */
         .tours-table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
+        
         .tours-table th, 
         .tours-table td {
             padding: 15px;
             text-align: left;
             border-bottom: 1px solid #ecf0f1;
         }
+        
         .tours-table th {
-            background-color: #3498db;
+            background-color: #2e8b57;
             color: white;
             position: sticky;
             top: 0;
         }
+        
         .tours-table tr:nth-child(even) {
             background-color: #f8f9fa;
         }
+        
         .tours-table tr:hover {
             background-color: #e8f4fc;
         }
+        
         .tour-link {
             color: #3498db;
             text-decoration: none;
             font-weight: bold;
         }
+        
         .tour-link:hover {
             text-decoration: underline;
         }
+        
         .availability {
             display: inline-block;
             padding: 5px 10px;
@@ -100,149 +171,278 @@
             font-size: 0.8em;
             font-weight: bold;
         }
+        
         .available {
             background: #2ecc71;
             color: white;
         }
+        
         .unavailable {
             background: #e74c3c;
             color: white;
         }
+        
         .soon {
             background: #f39c12;
             color: white;
         }
-        
+                footer {
+            background-color: #2e8b57;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            flex: 1;
+            min-width: 200px;
+            text-align: left;
+        }
+
+        .footer-section h3 {
+            color: white;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 10px;
+        }
+
+        .footer-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-section a {
+            color: #e0e0e0;
+            text-decoration: none;
+            display: block;
+            padding: 5px 0;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+        }
+
+        .copyright {
+            width: 100%;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            font-size: 0.9rem;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
         /* Адаптивность */
         @media (max-width: 992px) {
-            body {
+            .content-wrapper {
                 flex-direction: column;
             }
+            
             nav {
                 width: 100%;
-                padding: 15px;
+                order: 1;
             }
+            
             main {
+                order: 2;
                 padding: 20px;
             }
-            .filters {
-                grid-template-columns: 1fr 1fr;
-            }
         }
+        
+        
         @media (max-width: 768px) {
-            .filters {
-                grid-template-columns: 1fr;
-            }
             .tours-table {
                 display: block;
                 overflow-x: auto;
             }
+            
+            .header-container {
+                padding: 15px;
+            }
+            
+            .logo {
+                height: 50px;
+            }
+            
+            .company-name {
+                font-size: 24px;
+            }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+    <div class="header-wrapper">
+        <div class="header-container">
+            <div class="logo-title">
+                <img src="images/logo.png" alt="Логотип EcoTour" class="logo">
+                <h1 class="company-name">EcoTour</h1>
+            </div>
+        </div>
+    </div>
 
-    <nav>
-        <ul>
-            <li><a href="index.html">Главная</a></li>
-            <li><a href="news.html">Новости</a></li>
-            <li>
-                <a href="products.html">О продукции ▼</a>
-                <ul class="submenu">
-                    <li><a href="price.html">Прайс-лист</a></li>
+    <div class="content-wrapper">
+        <nav>
+            <ul>
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="news.html">Новости</a></li>
+                <li>
+                    <a href="products.html">О продукции ▼</a>
+                    <ul class="submenu">
+                        <li><a href="price.html" class="active">Прайс-лист</a></li>
+                    </ul>
+                </li>
+                <li><a href="faq.html">Вопросы и ответы</a></li>
+                <li><a href="vacancies.html">Вакансии</a></li>
+                <li><a href="partners.html">Партнеры</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="carts.html">Карта проекта</a></li>
+            </ul>
+        </nav>
+
+        <main>
+            <h1>Прайс-лист туров</h1>
+            
+            <table class="tours-table" id="toursTable">
+                <thead>
+                    <tr>
+                        <th>Название тура</th>
+                        <th>Страна</th>
+                        <th>Тип</th>
+                        <th>Даты</th>
+                        <th>Ночей</th>
+                        <th>Цена (руб.)</th>
+                        <th>Наличие</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="toursiki/rome.html" class="tour-link">Рим - Вечный город</a></td>
+                        <td>Италия</td>
+                        <td>Экскурсионный</td>
+                        <td>15.06.2025-22.06.2025</td>
+                        <td>7</td>
+                        <td>85 900</td>
+                        <td><span class="availability available">Есть места</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="toursiki/paris.html" class="tour-link">Париж романтический</a></td>
+                        <td>Франция</td>
+                        <td>Экскурсионный</td>
+                        <td>10.07.2025-17.07.2025</td>
+                        <td>7</td>
+                        <td>99 999</td>
+                        <td><span class="availability available">Есть места</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="toursiki/barcelona.html" class="tour-link">Барселона и побережье</a></td>
+                        <td>Испания</td>
+                        <td>Пляжный</td>
+                        <td>01.08.2025-15.08.2025</td>
+                        <td>14</td>
+                        <td>114 999</td>
+                        <td><span class="availability soon">Заканчиваются</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="toursiki/crete.html" class="tour-link">Отдых на Крите</a></td>
+                        <td>Греция</td>
+                        <td>Пляжный</td>
+                        <td>05.06.2025-19.06.2025</td>
+                        <td>14</td>
+                        <td>175 000</td>
+                        <td><span class="availability unavailable">Нет мест</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="toursiki/dolomites.html" class="tour-link">Доломитовые Альпы</a></td>
+                        <td>Италия</td>
+                        <td>Горнолыжный</td>
+                        <td>15.12.2025-22.12.2025</td>
+                        <td>7</td>
+                        <td>99 000</td>
+                        <td><span class="availability available">Есть места</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="toursiki/altay.html" class="tour-link">Чудо Алтая</a></td>
+                        <td>Россия</td>
+                        <td>Горный</td>
+                        <td>15.12.2025-22.12.2025</td>
+                        <td>7</td>
+                        <td>39 000</td>
+                        <td><span class="availability available">Есть места</span></td>
+                    </tr>
+                    <tr>
+                        <td><a href="toursiki/buryt.html" class="tour-link">Байкальский заповедник</a></td>
+                        <td>Россия, Бурятия</td>
+                        <td>Заповедник</td>
+                        <td>01.08.2025-15.08.2025</td>
+                        <td>14</td>
+                        <td>27 999</td>
+                        <td><span class="availability soon">Заканчиваются</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+            <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>EcoTour</h3>
+                <p>Инновационные экологические туры с местными гидами по всему миру.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                    <a href="#"><i class="fab fa-telegram-plane"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Меню</h3>
+                <ul>
+                    <li><a href="index.html">Главная</a></li>
+                    <li><a href="news.html">Новости</a></li>
+                    <li><a href="products.html">О продукции</a></li>
+                    <li><a href="faq.html">Вопросы и ответы</a></li>
+                    <li><a href="contacts.html">Контакты</a></li>
                 </ul>
-            </li>
-            <li><a href="faq.html">Вопросы и ответы</a></li>
-            <li><a href="vacancies.html">Вакансии</a></li>
-            <li><a href="partners.html">Партнеры</a></li>
-            <li><a href="contacts.html">Контакты</a></li>
-        </ul>
-    </nav>
-
-    <main>
-        <h1>Прайс-лист туров</h1>
-        
-
-        <table class="tours-table" id="toursTable">
-            <thead>
-                <tr>
-                    <th>Название тура</th>
-                    <th>Страна</th>
-                    <th>Тип</th>
-                    <th>Даты</th>
-                    <th>Ночей</th>
-                    <th>Цена (руб.)</th>
-                    <th>Наличие</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="products.html#rome" class="tour-link">Рим - Вечный город</a></td>
-                    <td>Италия</td>
-                    <td>Экскурсионный</td>
-                    <td>15.06.2025-22.06.2025</td>
-                    <td>7</td>
-                    <td>85 900</td>
-                    <td><span class="availability available">Есть места</span></td>
-                </tr>
-                <tr>
-                    <td><a href="products.html#paris" class="tour-link">Париж романтический</a></td>
-                    <td>Франция</td>
-                    <td>Экскурсионный</td>
-                    <td>10.07.2025-17.07.2025</td>
-                    <td>7</td>
-                    <td>99 999</td>
-                    <td><span class="availability available">Есть места</span></td>
-                </tr>
-                <tr>
-                    <td><a href="products.html#barcelona" class="tour-link">Барселона и побережье</a></td>
-                    <td>Испания</td>
-                    <td>Пляжный</td>
-                    <td>01.08.2025-15.08.2025</td>
-                    <td>14</td>
-                    <td>114 999</td>
-                    <td><span class="availability soon">Заканчиваются</span></td>
-                </tr>
-                <tr>
-                    <td><a href="products.html#crete" class="tour-link">Отдых на Крите</a></td>
-                    <td>Греция</td>
-                    <td>Пляжный</td>
-                    <td>05.06.2025-19.06.2025</td>
-                    <td>14</td>
-                    <td>175 000</td>
-                    <td><span class="availability unavailable">Нет мест</span></td>
-                </tr>
-                <tr>
-                    <td><a href="products.html#dolomites" class="tour-link">Доломитовые Альпы</a></td>
-                    <td>Италия</td>
-                    <td>Горнолыжный</td>
-                    <td>15.12.2025-22.12.2025</td>
-                    <td>7</td>
-                    <td>99 000</td>
-                    <td><span class="availability available">Есть места</span></td>
-                </tr>
-                                <tr>
-                    <td><a href="products.html#altay" class="tour-link">Чудо Алтая</a></td>
-                    <td>Россия</td>
-                    <td>Горный</td>
-                    <td>15.12.2025-22.12.2025</td>
-                    <td>7</td>
-                    <td>39 000</td>
-                    <td><span class="availability available">Есть места</span></td>
-                </tr>
-                                <tr>
-                    <td><a href="products.html#barcelona" class="tour-link">Байкальский заповедник</a></td>
-                    <td>Россия, Бурятия</td>
-                    <td>Заповедник</td>
-                    <td>01.08.2025-15.08.2025</td>
-                    <td>14</td>
-                    <td>27 999</td>
-                    <td><span class="availability soon">Заканчиваются</span></td>
-                </tr>
-            </tbody>
-        </table>
-
-       
-    </main>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Москва, ул. Экологическая, 15</li>
+                    <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
+                    <li><i class="fas fa-envelope"></i> info@ecotour.ru</li>
+                </ul>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 EcoTour. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
